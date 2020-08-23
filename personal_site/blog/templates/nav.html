@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- NAVIGATION BAR -->
+    <div class="header-img img-fluid container-header">
+    </div>
+    <div>
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #333;">
+        <a class="masterhead-brand navbar-brand nav-item " href="index.html">Damir Temir</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"href="temp/resume.html">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="temp/projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="temp/art.html">Art</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="temp/travel.html">Travelling</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-right">
+                <li class="navbar-brand">
+                    <a class="nav-link" href="https://github.com/dtemir">
+                        <img src="../static/images/github.png" class="img-fluid" style="background: transparent; width:35px;" alt="Github Logo" width="40" height="40" loading="lazy">
+                    </a>
+                </li>
+                <li class="navbar-brand">
+                    <a class="nav-link" href="https://www.linkedin.com/in/damirtemir/">
+                        <img src="../static/images/linkedin.png" class="img-fluid" style="background: transparent; width:35px;" alt="LinkedIn Logo" width="40" height="40" loading="lazy">
+                    </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    </div>
+
+    {% block content %}
+        <!-- Content Goes here -->
+    {% endblock content %}
+
+</html>
