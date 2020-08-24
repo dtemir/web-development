@@ -1,4 +1,4 @@
-{% extends 'nav.html' %}
+{% extends 'blog/nav.html' %}
 {% load static %}
 {% block content %}
 
@@ -25,9 +25,7 @@
 
     </head>
     <body>
-
-
-        <main class="containter">
+        <main>
 
             <div class="alert alert-dark alert-dismissible fade show" role="alert">
                 <strong>Note: </strong>The website is still under construction.
@@ -39,18 +37,22 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 mt-3 left">
+                {% if post_list %}
+                    <div class="col-md-8 mt-3">
                         {% for post in post_list %}
                         <div class="card mb-4">
                         <div class="card-body">
                             <h2 class="card-body">{{ post.title }}</h2>
                             <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }}</p>
                             <p class="card-text">{{ post.content|slice:":200" }}</p>
-                            <a href="{% url 'post_detail' post.slug %}" class="btn btn-dark">Read More</a>
+                            <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-dark">Read More</a>
                         </div>
                         </div>
                         {% endfor %}
                     </div>
+                {% else %}
+                    <p>No posts are available yet</p>
+                {% endif %}
                 </div>
             </div>
 
