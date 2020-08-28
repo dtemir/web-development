@@ -22,3 +22,20 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title[:50]
+
+
+class Model(models.Model):
+    # related_name is used to avoid calling post.comment_set.all() when fetching all
+    # comments for a post. Instead, I'll use post.comments.all()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body[:10], self.name)

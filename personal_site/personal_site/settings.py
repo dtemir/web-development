@@ -26,6 +26,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 't7^@8f)#hp-ir4ijll-i)l^&hxnhrde5q1kn7)c74ns*u9#qec'
 
 # Application definition
 

@@ -12,9 +12,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
         <link rel="stylesheer" type="text/css" href="{% static 'blog/cover.css' %}">
-        <!-- This is for re-using the Navigation Bar -->
-        <script src="//code.jquery.com/jquery.min.js"></script>
-        <!-- end -->
         <script>
             function alert_visible()
             {
@@ -36,7 +33,7 @@
             </div>
 
             <div class="container">
-                <div class="row">
+                <div class="row my-lg-auto">
                 {% if post_list %}
                     <div class="col-md-8 mt-3">
                         {% for post in post_list %}

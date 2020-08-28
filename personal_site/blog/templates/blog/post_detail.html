@@ -1,4 +1,4 @@
-{% extends 'nav.html' %}
+{% extends 'blog/nav.html' %}
 {% load static %}
 {% block content %}
 
@@ -29,7 +29,7 @@
                     <p class="card-text ">{{ object.content | safe }}</p>
                 </div>
             </div>
-            {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+            {% block sidebar %} {% include 'blog/sidebar.html' %} {% endblock sidebar %}
         </div>
     </div>
 
