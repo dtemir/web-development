@@ -24,7 +24,7 @@ class Post(models.Model):
         return self.title[:50]
 
 
-class Model(models.Model):
+class Comment(models.Model):
     # related_name is used to avoid calling post.comment_set.all() when fetching all
     # comments for a post. Instead, I'll use post.comments.all()
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
