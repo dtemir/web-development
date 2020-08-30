@@ -36,9 +36,9 @@
           <div class="card-body">
             <!-- comments -->
             {% if comments.count == 0 %}
-            <h2>No posted comments. Be the first!</h2>
+            <h4>No posted comments. Be the first!</h4>
             {% else %}
-            <h2>{{ comments.count }} comments</h2>
+            <h4>{{ comments.count }} comments</h4>
             {% endif %}
 
             {% for comment in comments %}
@@ -62,7 +62,7 @@
               Your comment is awaiting moderation
             </div>
             {% else %}
-            <h3>Leave a comment</h3>
+            <h4>Leave a comment</h4>
             <form method="post" style="margin-top: 1.3em;">
               {{ comment_form | crispy}}
               {% csrf_token %}
