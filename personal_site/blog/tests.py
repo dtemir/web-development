@@ -3,13 +3,18 @@ from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from .models import Post
+from .models import Post, Comment
 
 
 def create_post(title, slug, content, status):
     """Create a post with the given values"""
     user = User.objects.create_user(username='test', email='', password='who_cares_what_is_it')
     return Post.objects.create(title=title, author=user, slug=slug, content=content, status=status)
+
+
+def create_comment(post, name, email, body, active):
+    """Create a comment with the given values"""
+    return Comment.objects.create(post=post, name=name, email=email, body=body, active=active)
 
 
 class PostModelTests(TestCase):
@@ -60,7 +65,7 @@ class PostDetailModelTest(TestCase):
     def test_post_with_status_1(self):
         """
         Since detail view can only be accessed for a post with status 1,
-        we need to check that information provided on the detail view page is
+        we can only check that information provided on the detail view page is
         accurate
         """
         post = create_post(title="Title", slug="slug", content="Lost of text goes in here", status=1)
@@ -69,3 +74,24 @@ class PostDetailModelTest(TestCase):
         self.assertContains(response, post.content)  # check content is correct
         self.assertContains(response, post.title)  # check title is correct
         self.assertContains(response, post.author)  # check author is correct
+
+    def test_active_comment_under_post(self):
+        """
+        Ensure that a comment with active status is visible under the specified post,
+        and that it reflects all the attributes of the comment object
+        """
+        post = create_post(title="Title", slug="slug", content="Lost of text goes in here", status=1)
+        comment = create_comment(post, name='username', email='', body='Lots of text goes in here', active=True)
+        url = reverse('blog:post_detail', args=(post.slug,))
+        response = self.client.get(url)
+        self.assertContains(response, comment.name)
+        self.assertContains(response, comment.email)
+        self.assertContains(response, comment.body)
+
+    def test_not_active_comment_under_post(self):
+        post = create_post(title="Title", slug="slug", content="Lost of text goes in here", status=1)
+        comment = create_comment(post, name='username', email='', body='Lots of text goes in here', active=False)
+        url = reverse('blog:post_detail', args=(post.slug,))
+        response = self.client.get(url)
+        self.assertContains(response, "No posted comments. Be the first!")
+        self.assertQuerysetEqual(response.context['comments'], [])
