@@ -9,6 +9,8 @@ class PostList(generic.ListView):
     template_name = 'blog/blog.html'
     context_object_name = 'post_list'
 
+    paginate_by = 3
+
 
 def post_detail(request, slug):
     template_name = 'blog/post_detail.html'

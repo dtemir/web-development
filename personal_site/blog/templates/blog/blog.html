@@ -32,10 +32,10 @@
                 </form>
             </div>
 
-            <div class="container">
-                <div class="row my-lg-auto">
+            <div class="container align-items-center">
+                <div class="row">
                 {% if post_list %}
-                    <div class="col-md-8 mt-3">
+                    <div class="col-md-8 mt-3 mx-auto">
                         {% for post in post_list %}
                         <div class="card mb-4">
                         <div class="card-body">
@@ -50,8 +50,23 @@
                 {% else %}
                     <p>No posts are available yet</p>
                 {% endif %}
+
                 </div>
             </div>
+
+            {% if is_paginated %}
+              <nav aria-label="Page navigation container"></nav>
+              <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+                {% endif %}
+              </ul>
+              </nav>
+            {% endif %}
 
 
         </main>

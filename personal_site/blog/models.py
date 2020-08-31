@@ -23,6 +23,12 @@ class Post(models.Model):
     def __str__(self):
         return self.title[:50]
 
+    # used for sitemap to specify the url location
+    def get_absolute_url(self):
+        from django.urls import reverse
+
+        return reverse('blog:post_detail', kwargs={'slug': str(self.slug)})
+
 
 class Comment(models.Model):
     # related_name is used to avoid calling post.comment_set.all() when fetching all
