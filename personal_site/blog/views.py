@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from django.views import generic
+from django.views.generic import ListView, CreateView
 from .models import Post
 from .forms import CommentForm
 
 
-class PostList(generic.ListView):
+class PostList(ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog/blog.html'
     context_object_name = 'post_list'
@@ -35,3 +35,10 @@ def post_detail(request, slug):
                                            'comments': comments,
                                            'new_comment': new_comment,
                                            'comment_form': comment_form})
+
+
+class AddPostView(CreateView):
+    model = Post
+    template_name = 'blog/add_post.html'
+
+    fields = '__all__'

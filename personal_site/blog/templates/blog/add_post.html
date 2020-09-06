@@ -1,0 +1,23 @@
+{% extends 'blog/nav.html' %}
+{% load static %}
+{% block content %}
+    <body>
+        <div class="col-md-8 card mx-auto mt-3 ">
+          <div class="card-body">
+            {% if new_post %}
+            <div class="alert alert-success" role="alert">
+              Your post has been taken
+            </div>
+            {% else %}
+            <h4>Add Post...</h4>
+            <form method="POST" style="margin-top: 1.3em;">
+              {% csrf_token %}
+                {{ form.as_p }}
+              <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+            {% endif %}
+          </div>
+        </div>
+    </body>
+{% endblock content %}
+
