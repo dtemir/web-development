@@ -13,8 +13,11 @@
             {% endif %}
             <div class="card-body">
                 <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
-                <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+                <p class="text-muted">{{ post.author }} | {{ post.created_on }}</p>
                 <p class="card-text ">{{ post.content | safe }}</p>
+                {% if post.updated_on > post.created_on %}
+                <p class="text-muted">Updated: {{ post.updated_on }}</p>
+                {% endif %}
             </div>
             </div>
 
