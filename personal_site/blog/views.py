@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 class PostList(ListView):
@@ -40,5 +40,6 @@ def post_detail(request, slug):
 class AddPostView(CreateView):
     model = Post
     template_name = 'blog/add_post.html'
+    form_class = PostForm
 
-    fields = '__all__'
+    #fields = ('__all__')
