@@ -25,9 +25,13 @@ tr
 .header-img {
     max-width: 100%;
     height: 200px;
-    background-size: cover;
-    background-image: url(../images/thunders-2.jpg);
+    background-image: url(../images/arch.jpg);
     filter: brightness(80%);
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .nav-font-lrg
 {

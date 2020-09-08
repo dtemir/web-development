@@ -6,9 +6,14 @@ from django.contrib.auth.models import User
 from .models import Post, Comment
 
 
+def create_user():
+    """Create a user to be an author"""
+    return User.objects.create_user(username='test', email='', password='who_cares_what_is_it')
+
+
 def create_post(title, slug, content, status):
     """Create a post with the given values"""
-    user = User.objects.create_user(username='test', email='', password='who_cares_what_is_it')
+    user = create_user()
     return Post.objects.create(title=title, author=user, slug=slug, content=content, status=status)
 
 
@@ -89,6 +94,10 @@ class PostDetailModelTest(TestCase):
         self.assertContains(response, comment.body)
 
     def test_not_active_comment_under_post(self):
+        """
+        Ensure that a comment with non-active status is invisible under the specified post,
+        and that it instead says a message that there are no comments yet
+        """
         post = create_post(title="Title", slug="slug", content="Lost of text goes in here", status=1)
         comment = create_comment(post, name='username', email='', body='Lots of text goes in here', active=False)
         url = reverse('blog:post_detail', args=(post.slug,))
