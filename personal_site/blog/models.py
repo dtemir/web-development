@@ -24,7 +24,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title[:50]
 
-    # used for sitemap to specify the url location
+    # used for sitemap to specify the url location (also used by AddPostView)
     def get_absolute_url(self):
         from django.urls import reverse
 
