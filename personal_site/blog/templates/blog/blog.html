@@ -21,7 +21,7 @@
                         <div class="card mb-4">
                         <div class="card-body">
                             <h2 class="card-body">{{ post.title }}</h2>
-                            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }}</p>
+                            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }} | {{ post.category }}</p>
                             <p class="card-text">{{ post.content|slice:":200" }}</p>
                             <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-dark">Read More</a>
                         </div>

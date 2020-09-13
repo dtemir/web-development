@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 STATUS = (
@@ -10,13 +11,15 @@ STATUS = (
 
 class Post(models.Model):
     title = models.CharField(max_length=100, unique=True)
-    header_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    header_image = models.ImageField(null=True, blank=True, upload_to='images/')
     slug = models.SlugField(max_length=100, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    category = models.CharField(max_length=255, default='coding')
+
 
     class Meta:
         ordering = ['-created_on']
@@ -26,9 +29,19 @@ class Post(models.Model):
 
     # used for sitemap to specify the url location (also used by AddPostView)
     def get_absolute_url(self):
-        from django.urls import reverse
 
         return reverse('blog:post_detail', kwargs={'slug': str(self.slug)})
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+
+        return reverse('blog:home')
 
 
 class Comment(models.Model):
