@@ -7,12 +7,17 @@
         <div class="container align-items-center">
         <div class="col-md-8 card mx-auto mt-3 ">
           <div class="card-body">
-              <h1>Edit Post</h1>
-            <form method="POST" style="margin-top: 1.3em;">
-              {% csrf_token %}
+              {% if user.is_authenticated %}
+                <h1>Edit Post</h1>
+                <form method="POST" style="margin-top: 1.3em;">
+                {% csrf_token %}
                 {{ form|crispy}}
-              <button type="submit" class="btn btn-dark">Update</button>
-            </form>
+                <button type="submit" class="btn btn-dark">Update</button>
+                </form>
+              {% else %}
+                <h3>You are not logged in</h3>
+                <p>Please log in</p>
+              {% endif %}
           </div>
         </div>
         </div>

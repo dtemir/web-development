@@ -7,13 +7,17 @@
         <div class="container align-items-center">
         <div class="col-md-8 card mx-auto mt-3 ">
           <div class="card-body">
+              {% if user.is_authenticated %}
               <h3>Delete Post: {{ post.title }}</h3>
-
-            <form method="POST" style="margin-top: 1.3em;">
-              {% csrf_token %}
-                <p>Are you sure?</p></br>
-              <button type="submit" class="btn btn-dark">Delete</button>
-            </form>
+                <form method="POST" style="margin-top: 1.3em;">
+                  {% csrf_token %}
+                    <p>Are you sure?</p></br>
+                  <button type="submit" class="btn btn-dark">Delete</button>
+                </form>
+              {% else %}
+              <h3>You are not logged in</h3>
+              <p>Please log in</p>
+              {% endif %}
 
           </div>
         </div>
