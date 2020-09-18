@@ -20,7 +20,6 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     category = models.CharField(max_length=255, default='Coding')
 
-
     class Meta:
         ordering = ['-created_on']
 

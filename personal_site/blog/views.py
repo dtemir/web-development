@@ -38,6 +38,13 @@ def post_detail(request, slug):
                                            'comment_form': comment_form})
 
 
+def CategoryView(request, category):
+    template_name = 'blog/categories.html'
+    category_posts = Post.objects.filter(category=category).order_by('-created_on')
+
+    return render(request, template_name, {'category_posts': category_posts})
+
+
 class AddPostView(CreateView):
     model = Post
     template_name = 'blog/add_post.html'
