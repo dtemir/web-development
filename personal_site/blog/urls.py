@@ -19,6 +19,7 @@ urlpatterns = [
     path('<slug:slug>/', views.post_detail, name='post_detail'),
     path('<slug:slug>/edit', views.EditPostView.as_view(), name='edit_post'),
     path('<slug:slug>/delete', views.DeletePostView.as_view(), name='delete_post'),
+    path('<slug:slug>/like', views.LikeView, name='like_post'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 

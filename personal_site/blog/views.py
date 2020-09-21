@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post, Category
 from .forms import CommentForm, PostForm, EditForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 
 
 class PostList(ListView):
@@ -32,10 +33,15 @@ def post_detail(request, slug):
     else:
         comment_form = CommentForm()
 
+    likes = get_object_or_404(Post, slug=slug)
+    total_likes = likes.total_likes()
+
     return render(request, template_name, {'post': post,
                                            'comments': comments,
                                            'new_comment': new_comment,
-                                           'comment_form': comment_form})
+                                           'comment_form': comment_form,
+                                           'total_likes': total_likes,
+                                           })
 
 
 def CategoryView(request, category):
@@ -43,6 +49,12 @@ def CategoryView(request, category):
     category_posts = Post.objects.filter(category=category).order_by('-created_on')
 
     return render(request, template_name, {'category_posts': category_posts})
+
+
+def LikeView(request, slug):
+    post = get_object_or_404(Post, slug=request.POST.get('post_slug'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('blog:post_detail', args=slug))
 
 
 class AddPostView(CreateView):

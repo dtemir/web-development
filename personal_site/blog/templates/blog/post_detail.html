@@ -20,6 +20,13 @@
                     {% endif %}
                 </p>
                 <p class="card-text ">{{ post.content | safe }}</p>
+                <form action="{% url 'blog:like_post' post.slug %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" name="post_slug" value="{{ post.slug }}" class="btn btn-primary btn-sm">
+                        Like
+                    </button>
+                    - {{ total_likes }} Likes
+                </form>
                 {% if post.updated_on > post.created_on %}
                 <p class="text-muted">Updated: {{ post.updated_on }}</p>
                 {% endif %}
