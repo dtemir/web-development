@@ -14,6 +14,10 @@
                   {{ form|crispy}}
               <button type="submit" class="btn btn-dark">Publish</button>
               </form>
+              <script>
+                var name = "{{ user.id }}";
+                document.getElementById("views.author").value = name;
+              </script>
               {% else %}
                 <h3>You are not logged in</h3>
                 <p>Please log in</p>
