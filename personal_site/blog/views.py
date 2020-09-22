@@ -53,8 +53,16 @@ def CategoryView(request, category):
 
 def LikeView(request, slug):
     post = get_object_or_404(Post, slug=request.POST.get('post_slug'))
-    post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('blog:post_detail', args=slug))
+    liked = False
+
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+
+    return HttpResponseRedirect(reverse('blog:post_detail', args=[slug]))
 
 
 class AddPostView(CreateView):
