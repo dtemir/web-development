@@ -1,1 +1,4 @@
 personal_site/personal_site/settings.py
+personal_site/cloud_sql_proxy
+personal_site/mydatabase
+personal_site/db.sqlite3
