@@ -1,17 +1,24 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import Post, Category
+from .models import Post
+# Category
 from .forms import CommentForm, PostForm, EditForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
 
 class PostList(ListView):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'blog/blog.html'
-    context_object_name = 'post_list'
 
-    paginate_by = 3
+    template_name = 'blog/blog.html'
+
+    def __init__(self):
+        queryset = Post.objects.filter(status=1).order_by('-created_on')
+        context_object_name = 'post_list'
+        paginate_by = 3
+        self.queryset = queryset
+        self.context_object_name = context_object_name
+        self.paginate_by = paginate_by
+        super().__init__()
 
 
 def post_detail(request, slug):
@@ -44,11 +51,11 @@ def post_detail(request, slug):
                                            })
 
 
-def CategoryView(request, category):
-    template_name = 'blog/categories.html'
-    category_posts = Post.objects.filter(category=category).order_by('-created_on')
-
-    return render(request, template_name, {'category_posts': category_posts})
+# def CategoryView(request, category):
+#     template_name = 'blog/categories.html'
+#     category_posts = Post.objects.filter(category=category).order_by('-created_on')
+#
+#     return render(request, template_name, {'category_posts': category_posts})
 
 
 def LikeView(request, slug):
@@ -66,24 +73,41 @@ def LikeView(request, slug):
 
 
 class AddPostView(CreateView):
-    model = Post
+
+    def __init__(self):
+        self.model = Post
+        self.form_class = PostForm
+        super().__init__()
+
+
     template_name = 'blog/add_post.html'
-    form_class = PostForm
 
 
 class EditPostView(UpdateView):
-    model = Post
+
+    def __init__(self):
+        self.model = Post
+        self.form_class = EditForm
+        super().__init__()
+
     template_name = 'blog/edit_post.html'
-    form_class = EditForm
 
 
 class DeletePostView(DeleteView):
-    model = Post
+
+    def __init__(self):
+        self.model = Post
+        self.success_url = reverse_lazy('blog:home')
+        super().__init__()
+
     template_name = 'blog/delete_post.html'
-    success_url = reverse_lazy('blog:home')
 
-
-class AddCategoryView(CreateView):
-    model = Category
-    template_name = 'blog/add_category.html'
-    fields = '__all__'
+#
+# class AddCategoryView(CreateView):
+#
+#     def __init__(self):
+#         self.model = Category
+#         self.fields = '__all__'
+#         super().__init__()
+#
+#     template_name = 'blog/add_category.html'
