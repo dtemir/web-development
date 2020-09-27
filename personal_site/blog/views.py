@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import Post
-# Category
+from .models import Post, Category
 from .forms import CommentForm, PostForm, EditForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
@@ -51,11 +50,11 @@ def post_detail(request, slug):
                                            })
 
 
-# def CategoryView(request, category):
-#     template_name = 'blog/categories.html'
-#     category_posts = Post.objects.filter(category=category).order_by('-created_on')
-#
-#     return render(request, template_name, {'category_posts': category_posts})
+def CategoryView(request, category):
+    template_name = 'blog/categories.html'
+    category_posts = Post.objects.filter(category=category).order_by('-created_on')
+
+    return render(request, template_name, {'category_posts': category_posts})
 
 
 def LikeView(request, slug):
@@ -102,12 +101,12 @@ class DeletePostView(DeleteView):
 
     template_name = 'blog/delete_post.html'
 
-#
-# class AddCategoryView(CreateView):
-#
-#     def __init__(self):
-#         self.model = Category
-#         self.fields = '__all__'
-#         super().__init__()
-#
-#     template_name = 'blog/add_category.html'
+
+class AddCategoryView(CreateView):
+
+    def __init__(self):
+        self.model = Category
+        self.fields = '__all__'
+        super().__init__()
+
+    template_name = 'blog/add_category.html'
