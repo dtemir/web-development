@@ -1,12 +1,13 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Homepage</title>
+    <title>Damir Temir</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
 
     <!-- Bootstrap core CSS -->
-<link href="../../static/blog/bootstrap.min.css" rel="stylesheet">
+<link href="{% static 'greeting/bootstrap.min.css' %}" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -25,7 +26,7 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="../../static/blog/cover.css" rel="stylesheet">
+    <link href="{% static 'greeting/cover.css' %}" rel="stylesheet">
   </head>
   <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -33,12 +34,9 @@
     <div class="inner">
       
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="index.html">Damir Temir</a>
-        <a class="nav-link" href="../blog/blog.html">Blog</a>
-        <a class="nav-link" href="resume.html">Resume</a>
-        <a class="nav-link" href="projects.html">Projects</a>
-        <a class="nav-link" href="art.html">Artwork</a>
-        <a class="nav-link" href="travel.html">Travelling</a>
+        <a class="nav-link active" href="{% url 'greeting:index' %}">Damir Temir</a>
+        <a class="nav-link" href="{% url 'blog:home' %}">Blog</a>
+        <a class="nav-link" href="../../../blog/templates/temp/resume.html">Resume</a>
       </nav>
     </div>
   </header>
@@ -55,7 +53,6 @@
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-      <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
     </div>
   </footer>
 </div>

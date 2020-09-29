@@ -22,7 +22,7 @@
     <div class="header-img img-fluid container-header"></div>
     <div>
     <nav class="navbar nav-masthead navbar-expand-md navbar-dark" style="background-color: #333;">
-        <a class="navbar-brand nav-item " href="index.html">Damir Temir</a>
+        <a class="navbar-brand nav-item " href="{% url 'greeting:index' %}">Damir Temir</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,15 +33,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"href="../temp/resume.html">Resume</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../temp/projects.html">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../temp/art.html">Art</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../temp/travel.html">Travelling</a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-right">
@@ -56,10 +47,7 @@
                     </a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+
         </div>
     </nav>
     </div>

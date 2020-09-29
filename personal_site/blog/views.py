@@ -52,7 +52,7 @@ def post_detail(request, slug):
 
 def CategoryView(request, category):
     template_name = 'blog/categories.html'
-    category_posts = Post.objects.filter(category=category).order_by('-created_on')
+    category_posts = Post.objects.filter(category=category.replace('-', ' ')).order_by('-created_on')
 
     return render(request, template_name, {'category_posts': category_posts})
 
@@ -77,7 +77,6 @@ class AddPostView(CreateView):
         self.model = Post
         self.form_class = PostForm
         super().__init__()
-
 
     template_name = 'blog/add_post.html'
 
