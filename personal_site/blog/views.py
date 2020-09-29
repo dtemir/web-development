@@ -42,11 +42,16 @@ def post_detail(request, slug):
     likes = get_object_or_404(Post, slug=slug)
     total_likes = likes.total_likes()
 
+    liked = False
+    if likes.likes.filter(id=request.user.id):
+        liked = True
+
     return render(request, template_name, {'post': post,
                                            'comments': comments,
                                            'new_comment': new_comment,
                                            'comment_form': comment_form,
                                            'total_likes': total_likes,
+                                           'liked': liked,
                                            })
 
 
