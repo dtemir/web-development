@@ -83,3 +83,10 @@ tr
 .nav-masthead .nav-link:focus {
   border-bottom-color: rgba(255, 255, 255, .25);
 }
+
+button {
+    background-image: url(../images/like.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: none;
+}
