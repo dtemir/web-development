@@ -23,7 +23,7 @@
                             <h2 class="card-body">{{ post.title }}</h2>
                             <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }} |
                                 <a href="{% url 'blog:category' post.category|slugify %}" style="color:#333;">{{ post.category }}</a></p>
-                            <p class="card-text">{{ post.content|slice:":200"}}</p>
+                            <p class="card-text">{{ post.snippet}}</p>
                             <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-dark">Read More</a>
                         </div>
                         </div>

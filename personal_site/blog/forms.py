@@ -15,7 +15,7 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'header_image', 'slug', 'author', 'category', 'content', 'status')
+        fields = ('title', 'header_image', 'slug', 'snippet', 'author', 'category', 'content', 'status',)
 
         widgets = {
             'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'views.author', 'type': 'hidden'}),
