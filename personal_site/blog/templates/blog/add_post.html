@@ -11,7 +11,7 @@
               <h1>Add Post</h1>
               <form method="POST" style="margin-top: 1.3em;">
               {% csrf_token %}
-                  {{ form.media}}
+                  {{ form.media }}
                   {{ form|crispy }}
               <button type="submit" class="btn btn-dark">Publish</button>
               </form>

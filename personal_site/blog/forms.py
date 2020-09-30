@@ -19,11 +19,11 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'views.author', 'type': 'hidden'}),
-            'category': forms.Select(choices=choices, attrs={'class': 'form-control'})
+            'category': forms.Select(choices=choices, attrs={'class': 'form-control'}),
         }
 
 
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'header_image', 'slug', 'author', 'category', 'content', 'status')
+        fields = ('title', 'header_image', 'slug', 'snippet', 'author', 'category', 'content', 'status')
