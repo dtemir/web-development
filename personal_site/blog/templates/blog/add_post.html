@@ -8,17 +8,22 @@
         <div class="col-md-8 card mx-auto mt-3 ">
           <div class="card-body">
               {% if user.is_authenticated %}
-              <h1>Add Post</h1>
-              <form method="POST" style="margin-top: 1.3em;">
-              {% csrf_token %}
-                  {{ form.media }}
-                  {{ form|crispy }}
-              <button type="submit" class="btn btn-dark">Publish</button>
-              </form>
-              <script>
-                var name = "{{ user.id }}";
-                document.getElementById("views.author").value = name;
-              </script>
+                  {% if user.is_superuser %}
+                  <h1>Add Post</h1>
+                  <form method="POST" style="margin-top: 1.3em;">
+                  {% csrf_token %}
+                      {{ form.media }}
+                      {{ form|crispy }}
+                  <button type="submit" class="btn btn-dark">Publish</button>
+                  </form>
+                  <script>
+                    var name = "{{ user.id }}";
+                    document.getElementById("views.author").value = name;
+                  </script>
+                  {% else %}
+                    <h3>Unfortunately, you do not have a permission</h3>
+                    <p>Please go back to the homepage</p>
+                  {% endif %}
               {% else %}
                 <h3>You are not logged in</h3>
                 <p>Please log in</p>
