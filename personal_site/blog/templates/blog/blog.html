@@ -20,7 +20,7 @@
                         {% for post in post_list %}
                         <div class="card mb-4">
                         <div class="card-body">
-                            <h2 class="card-body">{{ post.title }}</h2>
+                            <h2 style="color: black;">{{ post.title }}</h2>
                             <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }} |
                                 <a href="{% url 'blog:category' post.category|slugify %}" style="color:#333;">{{ post.category }}</a></p>
                             <p class="card-text">{{ post.snippet }}</p>

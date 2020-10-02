@@ -1,5 +1,10 @@
 {% extends 'blog/nav.html' %}
 {% load static %}
+
+{% block link %}
+    <a href="single-blog.html">Category</a>
+{% endblock link %}
+
 {% block content %}
 
 
@@ -22,7 +27,7 @@
                         <div class="card-body">
                             <h2 class="card-body">{{ post.title }}</h2>
                             <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }} | {{ post.category }}</p>
-                            <p class="card-text">{{ post.content|slice:":200" }}</p>
+                            <p class="card-text">{{ post.slug }}</p>
                             <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-dark">Read More</a>
                         </div>
                         </div>

@@ -1,77 +1,154 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
     <head>
+        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>
-            {% block title %}
-                Homepage
-            {% endblock %}
-        </title>
-        <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/237/man-raising-hand-type-1-2_1f64b-1f3fb-200d-2642-fe0f.png">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
-        <link rel="stylesheer" type="text/css" href="{% static 'blog/cover.css' %}">
-
-
+        <link rel="icon" href="{% static 'greeting/img/favicon.png' %}" type="image/png">
+        <title>MeetMe Personal</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'greeting/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'greeting/vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'greeting/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'greeting/vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'greeting/vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'greeting/vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'greeting/vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'greeting/vendors/popup/magnific-popup.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'greeting/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'greeting/css/responsive.css' %}">
     </head>
-
-    <!-- NAVIGATION BAR -->
-    <div class="header-img img-fluid container-header"></div>
-    <div>
-    <nav class="navbar nav-masthead navbar-expand-md navbar-dark" style="background-color: #333;">
-        <a class="navbar-brand nav-item " href="{% url 'greeting:index' %}">Damir Temir</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'blog:home' %}">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"href="../temp/resume.html">Resume</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav mr-right">
-                <li class="navbar-brand">
-                    <a class="nav-link" href="https://github.com/dtemir">
-                        <img src="../../static/images/github.png" class="img-fluid" style="background: transparent; width:35px; filter: brightness(0%);" alt="Github Logo" width="40" height="40" loading="lazy">
-                    </a>
-                </li>
-                <li class="navbar-brand">
-                    <a class="nav-link" href="https://www.linkedin.com/in/damirtemir/">
-                        <img src="../../static/images/linkedin.png" class="img-fluid" style="background: transparent; width:35px; filter: brightness(0%);" alt="LinkedIn Logo" width="40" height="40" loading="lazy">
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-    </div>
-
-
-    {% block content %}
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+            <div class="main_menu">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container box_1620">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="{% url 'greeting:index' %}"><img src="{% static 'greeting/img/logo.png' %}" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="{% url 'greeting:index' %}">Home</a></li>
+								<li class="nav-item"><a class="nav-link" href="about-us.html">Resume</a></li>
+								<li class="nav-item"><a class="nav-link" href="{% url 'blog:home' %}">Blog</a></li>
+								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							</ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="box_1620">
+				<div class="banner_inner d-flex align-items-center">
+					<div class="container">
+						<div class="banner_content text-center">
+							<h2>Blog</h2>
+							<div class="page_link">
+								<a href="index.html">Home</a>
+								<a href="blog.html">Blog</a>
+								{% block link %}
+								<!-- 'blog details' goes here -->
+								{% endblock link %}
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Blog Area =================-->
+		<br />
+		<br />
+        {% block content %}
         <!-- Content Goes here -->
-    {% endblock content %}
+        {% endblock content %}
+		<br />
+		<br />
+        <!--================Blog Area =================-->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        
+        <!--================Footer Area =================-->
+        <footer class="footer_area p_120">
+        	<div class="container">
+        		<div class="row footer_inner">
+        			<div class="col-lg-5 col-sm-6">
+        				<aside class="f_widget ab_widget">
+        					<div class="f_title">
+        						<h3>About Me</h3>
+        					</div>
+        					<p>Are you looking for a skillful teammate to work on a project? If yes, make sure to contact me.</p>
+        				</aside>
+        			</div>
+        			<div class="col-lg-5 col-sm-6">
+						<aside class="f_widget ab_widget">
+        					<div class="f_title">
+								<h3>Commands</h3>
+							</div>
+						{% if user.is_authenticated %}
+							<a href="{% url 'logout' %}">Logout</a>
+						{% else %}
+							<a href="{% url 'authorization:register' %}">Register | </a>
+							<a href="{% url 'login' %}">Login</a>
+						{% endif %}
+						</aside>
+        			</div>
+        			<div class="col-lg-2">
+        				<aside class="f_widget social_widget">
+        					<div class="f_title">
+        						<h3>Follow Me</h3>
+        					</div>
+							<p>Let's talk</p>
+							<p><a href="mailto:damir@temir.dev">damir@temir.dev</a></p>
+        				</aside>
+        			</div>
+        		</div>
+				<br />
+        	</div>
+			<div class="offset-md-2" style="bottom: 0">
+					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+			</div>
 
-    <footer class="page-footer font-small blue">
-
-    <div class="footer-copyright text-center py-3">
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-            <a href="{% url 'authorization:register' %}">Register | </a>
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-    </div>
-
-    </footer>
-
+        </footer>
+        <!--================End Footer Area =================-->
+        
+        
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'greeting/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'greeting/js/popper.js' %}"></script>
+        <script src="{% static 'greeting/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'greeting/js/stellar.js' %}"></script>
+        <script src="{% static 'greeting/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+        <script src="{% static 'greeting/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'greeting/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'greeting/vendors/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'greeting/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'greeting/vendors/popup/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'greeting/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'greeting/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'greeting/vendors/counter-up/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'greeting/js/mail-script.js' %}"></script>
+        <script src="{% static 'greeting/js/theme.js' %}"></script>
+    </body>
 </html>
