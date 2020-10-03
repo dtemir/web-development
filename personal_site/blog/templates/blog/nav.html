@@ -102,7 +102,15 @@
 								<h3>Commands</h3>
 							</div>
 						{% if user.is_authenticated %}
-							<a href="{% url 'logout' %}">Logout</a>
+							<ul>
+								<li><a href="{% url 'logout' %}">Logout</a></li>
+								{% if user.is_superuser %}
+								<li><a href="{% url 'blog:add_post' %}">Add Post</a></li>
+								<li><a href="{% url 'blog:add_category' %}">Add Category</a></li>
+							{% endif %}
+							</ul>
+
+
 						{% else %}
 							<a href="{% url 'authorization:register' %}">Register | </a>
 							<a href="{% url 'login' %}">Login</a>
@@ -112,20 +120,17 @@
         			<div class="col-lg-2">
         				<aside class="f_widget social_widget">
         					<div class="f_title">
-        						<h3>Follow Me</h3>
+        						<h3>Let's talk</h3>
         					</div>
-							<p>Let's talk</p>
 							<p><a href="mailto:damir@temir.dev">damir@temir.dev</a></p>
         				</aside>
         			</div>
         		</div>
 				<br />
         	</div>
-			<div class="offset-md-2" style="bottom: 0">
-					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			<small style="padding-left: 10px;"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-			</div>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small>
 
         </footer>
         <!--================End Footer Area =================-->
