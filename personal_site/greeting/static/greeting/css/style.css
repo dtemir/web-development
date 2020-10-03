@@ -2498,7 +2498,7 @@ h6 {
   border-radius: 5px; }
   .wel_item i {
     font-size: 24px;
-    background: linear-gradient(to right, #bdc3c7 0%, #86e7ff 70%);
+    background: linear-gradient(to right, #2c3e50 0%, #35628f 70%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; }
   .wel_item h4 {
@@ -2572,7 +2572,7 @@ h6 {
       font-weight: 500;
       color: #fff;
       font-family: "Roboto", sans-serif;
-      border: 1px solid #9ab5f5;
+      border: 1px solid #6a7580;
       background: rgba(255, 255, 255, 0.1); }
       .tabs_inner .nav.nav-tabs li a.active {
         background: #fff;
