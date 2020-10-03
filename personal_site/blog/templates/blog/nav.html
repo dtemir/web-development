@@ -57,8 +57,8 @@
 						<div class="banner_content text-center">
 							<h2>Blog</h2>
 							<div class="page_link">
-								<a href="index.html">Home</a>
-								<a href="blog.html">Blog</a>
+								<a href="{% url 'greeting:index'%}">Home</a>
+								<a href="{% url 'blog:home' %}">Blog</a>
 								{% block link %}
 								<!-- 'blog details' goes here -->
 								{% endblock link %}

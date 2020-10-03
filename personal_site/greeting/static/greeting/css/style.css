@@ -9,7 +9,7 @@ is the file you need to edit to change the look of the
 theme.
 ---------------------------------------------------- */
 /*=====================================================================
-@Template Name: Builder Construction 
+@Template Name: Builder Construction
 @Author: Rocky Ahmed
 @Developed By: Rocky Ahmed
 @Developer URL: http://rocky.wethemez.com
@@ -26,14 +26,14 @@ Table of Content:
 06/ breadcrumb
 07/ about
 08/ team
-09/ project 
-10/ price 
-11/ team 
-12/ blog 
-13/ video  
-14/ features  
-15/ career  
-16/ contact 
+09/ project
+10/ price
+11/ team
+12/ blog
+13/ video
+14/ features
+15/ career
+16/ contact
 17/ footer
 
 =====================================================================*/
@@ -2367,7 +2367,7 @@ h6 {
 ============================================================================================ */
 .main_btn {
   display: inline-block;
-  background-image: linear-gradient(to right, #766dff 0%, #86e8ff 48%, #766dff 100%);
+  background-image: linear-gradient(to right, #bdc3c7 0%, #86e8ff 48%, #2c3e50 100%);
   background-size: 200% auto;
   padding: 0px 40px;
   color: #fff;
@@ -2760,9 +2760,9 @@ h6 {
       color: #fff;
       font-size: 16px; }
     .personal_text .personal_social li:hover a {
-      background-image: -moz-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
-      background-image: -webkit-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
-      background-image: -ms-linear-gradient(0deg, #766dff 0%, #88f3ff 100%); }
+      background-image: -moz-linear-gradient(0deg, #bdc3c7 0%, #2c3e50 100%);
+      background-image: -webkit-linear-gradient(0deg, #bdc3c7 0%, #2c3e50 100%);
+      background-image: -ms-linear-gradient(0deg, #bdc3c7 0%, #2c3e50 100%); }
 
 /* End Personal Profile Area css
 ============================================================================================ */

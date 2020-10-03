@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block link %}
-    <a href="single-blog.html">Category</a>
+    <a href="{% url 'blog:category' post.category|slugify %}">Category</a>
 {% endblock link %}
 
 {% block content %}
@@ -25,7 +25,7 @@
                         {% for post in category_posts %}
                         <div class="card mb-4">
                         <div class="card-body">
-                            <h2 class="card-body">{{ post.title }}</h2>
+                            <h2 style="color: black;">{{ post.title }}</h2>
                             <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }} | {{ post.category }}</p>
                             <p class="card-text">{{ post.slug }}</p>
                             <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-dark">Read More</a>
