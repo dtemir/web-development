@@ -9,6 +9,12 @@
         <div class="container align-items-center">
         <div class="col-md-8 card mx-auto mt-3 ">
           <div class="card-body">
+            <div class="alert alert-light" role="alert">
+              Please note that I will never see your password as it is successfully "hashed" by Django.
+                If you would like to learn more, see
+                <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function#:~:text=A%20password%20hash%20requires%20the,stored%20with%20the%20password%20hash.&text=The%20output%20of%20a%20password,key%20derivation%20functions%20(PBKDFs)"
+                   class="alert-link">Wiki on "Hash Function"</a>.
+            </div>
             <form method="POST" style="margin-top: 1.3em;">
               {% csrf_token %}
                 {{ form|crispy}}
