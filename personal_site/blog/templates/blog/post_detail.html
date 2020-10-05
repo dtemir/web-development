@@ -83,6 +83,11 @@
             {% endif %}
             {% else %}
             <h4>Leave a comment</h4>
+              <div class="alert alert-light" role="alert">
+                Please note that you are not registered. Your comment will have to go through approval.
+                  Consider
+                  <a href="{% url 'authorization:register' %}" class="alert-link">registering</a> to skip moderation.
+              </div>
             <form method="post" style="margin-top: 1.3em;">
               {{ comment_form | crispy}}
               {% csrf_token %}
