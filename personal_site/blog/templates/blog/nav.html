@@ -59,7 +59,10 @@
 				<div class="banner_inner d-flex align-items-center">
 					<div class="container">
 						<div class="banner_content text-center">
-							<h2>Blog</h2>
+							<h2>{% block page %}
+								Blog
+								{% endblock page %}
+							</h2>
 							<div class="page_link">
 								<a href="{% url 'greeting:index'%}">Home</a>
 								<a href="{% url 'blog:home' %}">Blog</a>
