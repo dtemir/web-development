@@ -2,6 +2,11 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block title %} Delete Blog Post {% endblock %}
+{% block page %} Delete Post: {{ post.title }}{% endblock %}
+{% block link %}
+<a href="{% url 'blog:post_detail' post.slug %}">Post Detail</a>
+<a href="{% url 'blog:delete_post' post.slug %}">Delete Post</a>
+{% endblock %}
 {% block content %}
     <body>
         <div class="container align-items-center">
@@ -9,7 +14,6 @@
           <div class="card-body">
               {% if user.is_authenticated %}
                   {% if user.id == post.author.id %}
-                      <h3>Delete Post: {{ post.title }}</h3>
                       <form method="POST" style="margin-top: 1.3em;">
                           {% csrf_token %}
                           <p>Are you sure?</p>
