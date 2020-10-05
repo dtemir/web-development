@@ -26,19 +26,24 @@
                     {% endif %}
                 </p>
                 <p class="card-text ">{{ post.content | safe }}</p>
-                <form action="{% url 'blog:like_post' post.slug %}" method="POST">
+                <div style="position: absolute; bottom: 10px; right: 10px;">
+                    <div style="position: absolute; left:3px">{{ total_likes }}</div>
+                    <br />
+                    <form action="{% url 'blog:like_post' post.slug %}" method="POST">
                     {% csrf_token %}
                     {% if liked %}
-                    <button type="submit" name="post_slug" value="{{ post.slug }}" class="btn btn-danger btn-sm">
-                        Unlike
+                    <button type="submit" name="post_slug" value="{{ post.slug }}" class="fa fa-heart-o"
+                    style="padding: 0; border: none; background: none;">
                     </button>
                     {% else %}
-                    <button type="submit" name="post_slug" value="{{ post.slug }}" class="btn btn-primary btn-sm">
-                        Like
+                    <button type="submit" name="post_slug" value="{{ post.slug }}" class="fa fa-heart-o"
+                    style="padding: 0; border: none; background: none;">
                     </button>
                     {% endif %}
-                    - {{ total_likes }} Likes
-                </form>
+
+                    </form>
+                </div>
+
                 {% if post.updated_on > post.created_on %}
                 <p class="text-muted">Updated: {{ post.updated_on }}</p>
                 {% endif %}
@@ -83,11 +88,13 @@
             {% endif %}
             {% else %}
             <h4>Leave a comment</h4>
+              {% if not user.is_authenticated %}
               <div class="alert alert-light" role="alert">
                 Please note that you are not registered. Your comment will have to go through approval.
                   Consider
                   <a href="{% url 'authorization:register' %}" class="alert-link">registering</a> to skip moderation.
               </div>
+              {% endif %}
             <form method="post" style="margin-top: 1.3em;">
               {{ comment_form | crispy}}
               {% csrf_token %}
