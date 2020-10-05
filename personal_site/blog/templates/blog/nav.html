@@ -98,7 +98,7 @@
         			<div class="col-lg-5 col-sm-6">
         				<aside class="f_widget ab_widget">
         					<div class="f_title">
-        						<h3>About Me</h3>
+        						<h3>About Me:</h3>
         					</div>
         					<p>Are you looking for a skillful teammate to work on a project? If yes, make sure to contact me.</p>
         				</aside>
@@ -106,7 +106,7 @@
         			<div class="col-lg-5 col-sm-6">
 						<aside class="f_widget ab_widget">
         					<div class="f_title">
-								<h3>Commands</h3>
+								<h3>Functions:</h3>
 							</div>
 						{% if user.is_authenticated %}
 							<ul>
@@ -114,7 +114,12 @@
 								{% if user.is_superuser %}
 								<li><a href="{% url 'blog:add_post' %}">Add Post</a></li>
 								<li><a href="{% url 'blog:add_category' %}">Add Category</a></li>
-							{% endif %}
+								{% else %}
+								<li>Leave a Comment</li>
+								<li>Leave a Like</li>
+								<li>Sort by Category</li>
+								{% endif %}
+
 							</ul>
 
 
@@ -127,7 +132,7 @@
         			<div class="col-lg-2">
         				<aside class="f_widget social_widget">
         					<div class="f_title">
-        						<h3>Let's talk</h3>
+        						<h3>Let's talk:</h3>
         					</div>
 							<p><a href="mailto:damir@temir.dev">damir@temir.dev</a></p>
         				</aside>
