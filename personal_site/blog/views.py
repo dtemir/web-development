@@ -59,7 +59,9 @@ def CategoryView(request, category):
     template_name = 'blog/categories.html'
     category_posts = Post.objects.filter(category=category.replace('-', ' ')).order_by('-created_on')
 
-    return render(request, template_name, {'category_posts': category_posts})
+    return render(request, template_name, {'category_posts': category_posts,
+                                           'cat': category.title(),
+                                           })
 
 
 def LikeView(request, slug):

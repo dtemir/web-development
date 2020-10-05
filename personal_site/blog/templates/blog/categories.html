@@ -1,9 +1,11 @@
 {% extends 'blog/nav.html' %}
 {% load static %}
 
+{% block title %} {{ cat }} {% endblock %}
+{% block page %} {{ cat }} {% endblock %}
 {% block link %}
-    <a href="{% url 'blog:category' post.category|slugify %}">Category</a>
-{% endblock link %}
+<a href="{% url 'blog:category' cat|slugify %}">Category</a>
+{% endblock %}
 
 {% block content %}
 
