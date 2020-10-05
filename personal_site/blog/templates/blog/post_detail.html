@@ -81,6 +81,14 @@
               {% csrf_token %}
               <button type="submit" class="btn btn-dark">Submit</button>
             </form>
+            {% if user.is_authenticated %}
+            <script>
+                var name = "{{ user.first_name }}";
+                document.getElementById("name").value = name;
+                var email = "{{ user.email }}";
+                document.getElementById("email").value = email;
+            </script>
+            {% endif %}
             {% endif %}
           </div>
         </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post, Category
-from .forms import CommentForm, PostForm, EditForm
+from .forms import CommentForm, CommentFormNotAuth, PostForm, EditForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
@@ -26,7 +26,7 @@ def post_detail(request, slug):
     comments = post.comments.filter(active=True)
     new_comment = None
     # If someone posts a comment
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             # Initialize a comment object, but don't commit yet
@@ -36,8 +36,18 @@ def post_detail(request, slug):
             # Save it
             new_comment.save()
 
+    elif request.method == 'POST' and not request.user.is_authenticated:
+        comment_form = CommentFormNotAuth(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+
     else:
-        comment_form = CommentForm()
+        if request.user.is_authenticated:
+            comment_form = CommentForm()
+        else:
+            comment_form = CommentFormNotAuth()
 
     likes = get_object_or_404(Post, slug=slug)
     total_likes = likes.total_likes()
