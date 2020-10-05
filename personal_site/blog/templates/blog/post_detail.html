@@ -71,9 +71,16 @@
         <div class="col-md-8 card mx-auto mt-3 ">
           <div class="card-body">
             {% if new_comment %}
+            {% if user.is_authenticated %}
             <div class="alert alert-success" role="alert">
-              Your comment is awaiting moderation
+              Your comment was published
             </div>
+            {% else %}
+            <div class="alert alert-success" role="alert">
+              Your comment is awaiting moderation. If you wish to comment momentarily, please
+                <a href="{% url 'authorization:register' %}">register</a>.
+            </div>
+            {% endif %}
             {% else %}
             <h4>Leave a comment</h4>
             <form method="post" style="margin-top: 1.3em;">

@@ -26,6 +26,7 @@ def post_detail(request, slug):
     comments = post.comments.filter(active=True)
     new_comment = None
     # If someone posts a comment
+    # Check if user is authenticated
     if request.method == 'POST' and request.user.is_authenticated:
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -33,6 +34,8 @@ def post_detail(request, slug):
             new_comment = comment_form.save(commit=False)
             # Assign the current post to the comment
             new_comment.post = post
+            # Activate the comment, since the user is logged in
+            new_comment.active = True
             # Save it
             new_comment.save()
 
