@@ -1,13 +1,14 @@
 {% extends 'blog/nav.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block title %}Login{% endblock %}
+{% block title %} Login {% endblock %}
+{% block page %} Login {% endblock %}
+{% block link %} <a href="{% url 'login' %}">Login</a>  {% endblock %}
 {% block content %}
     <body>
         <div class="container align-items-center">
         <div class="col-md-8 card mx-auto mt-3 ">
           <div class="card-body">
-              <h1>Login</h1>
             <form method="POST" style="margin-top: 1.3em;">
               {% csrf_token %}
                 {{ form|crispy}}
