@@ -1,4 +1,4 @@
-# Web-Development
+# web-development
 This a repository for my **web-development** projects. 
 I am not very keen about webdev, but I find it quite interesting as a hobby.
 
