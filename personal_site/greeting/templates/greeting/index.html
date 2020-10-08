@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -99,21 +99,27 @@
         					<div class="row">
         						<div class="col-md-4">
         							<div class="wel_item">
-        								<i class="lnr lnr-rocket"></i>
+										<a href="{% url 'blog:category' 'College' %}">
+											<i class="lnr lnr-rocket"></i>
+										</a>
         								<h4>5</h4>
         								<p>Courses Taken</p>
         							</div>
         						</div>
         						<div class="col-md-4">
         							<div class="wel_item">
-        								<i class="lnr lnr-book"></i>
+										<a href="{% url 'blog:category' 'Projects' %}">
+											<i class="lnr lnr-book"></i>
+										</a>
         								<h4>2</h4>
         								<p>Total Projects</p>
         							</div>
         						</div>
         						<div class="col-md-4">
         							<div class="wel_item">
-        								<i class="lnr lnr-earth"></i>
+										<a href="{% url 'blog:category' 'Travelling'%}">
+											<i class="lnr lnr-earth"></i>
+										</a>
         								<h4>10</h4>
         								<p>Countries Visited</p>
         							</div>
