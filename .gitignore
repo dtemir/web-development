@@ -4,3 +4,4 @@ personal_site/mydatabase
 personal_site/db.sqlite3
 personal_site/greeting/static/greeting/img
 personal_site/media
+.idea
