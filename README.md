@@ -20,4 +20,4 @@ However, now it is more of a personal site with a nice blogging system.
     * URLs for all of the views are in [*blog/urls.py*](https://github.com/dtemir/web-development/blob/master/personal_site/blog/urls.py). 
     Each view has a URL mapping, including sitemaps
     * Sitemaps for posts (django.contrib.sitemaps)
-    * The [*greeting*](https://github.com/dtemir/web-development/tree/master/personal_site/greeting) application is mostly for servic statics, such as the index page, resume, and contacts.
+    * The [*greeting*](https://github.com/dtemir/web-development/tree/master/personal_site/greeting) application is mostly for serving statics, such as the index page, resume, and contacts.
