@@ -1,7 +1,7 @@
 # web-development
 This a repository for my **web-development** projects. 
-I am not very keen about the front-end, 
-but I like working in the Django framework.
+I am not very keen about the Front-End (I mostly use available html templates), 
+but I like working on the Back-End with the Django framework.
 
 The idea for my current project comes from my final project for CS50x. 
 At first, it was going to be a simple Django blogging application(minimum style, 
@@ -18,14 +18,6 @@ However, now it is more of a personal site with a nice blogging system.
     They basically feed dicts into *templates* where the data is then parsed. 
     Note that some of them are Django generic views, others are just function-based views
     * URLs for all of the views are in *blog/urls.py*. 
-    Each view has a url mapping, including sitemaps
+    Each view has a URL mapping, including sitemaps
     * Sitemaps for posts (django.contrib.sitemaps).
-
-**Sidenote**
-
-Today's web applications have become so dynamic that they basically may push 
-all software to the web rather than phone and computer applications.
-Why installing software when you can just open a browser and have it? 
-If things like AWS and Azure will keep pushing hardware access for low prices,
-cloud computing will become universal, and this is where webdev is a key.
 
