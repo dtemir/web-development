@@ -8,5 +8,6 @@ app_name = 'greeting'
 
 urlpatterns = [
     path('', views.IndexView, name='index'),
+    path('resume/', views.ResumeView, name='resume'),
 ]
 
