@@ -18,6 +18,7 @@
                     {% csrf_token %}
                         {{ form.media}}
                         {{ form|crispy }}
+                    <br /><br />
                     <button class="btn btn-dark">Update</button>
                     </form>
                   {% else %}
