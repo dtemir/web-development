@@ -28,26 +28,55 @@
                 </p>
                 <p class="card-text ">{{ post.content | safe }}</p>
                 <div style="position: absolute; bottom: 10px; right: 10px;" class="text-muted">
-                    <div style="position: absolute; left:3px">{{ total_likes }}</div>
+                    <div style="position: absolute; left:3px" id="disappear">{{ total_likes }}</div>
                     <br />
-                    <form action="{% url 'blog:like_post' post.slug %}" method="POST">
-                    {% csrf_token %}
-                    {% if liked %}
-                    <button type="submit" name="post_slug" value="{{ post.slug }}" class="fa fa-heart-o"
-                    style="padding: 0; border: none; background: none;">
-                    </button>
-                    {% else %}
-                    <button type="submit" name="post_slug" value="{{ post.slug }}" class="fa fa-heart-o"
-                    style="padding: 0; border: none; background: none;">
-                    </button>
-                    {% endif %}
+                    {% if not user.is_authenticated %}
 
-                    </form>
+                        <script>
+
+                            likes_disapper = function() {
+                                    $('#disappear').replaceWith('');
+                                }
+
+                            alert = function(){
+
+                                likes_disapper();
+
+                                $('#alert_placeholder').replaceWith(
+                                    '<div class="alert alert-dark alert-dismissible fade show position-sticky" role="alert">' +
+                                    'Please consider<a href="{% url "authorization:register" %}"> Registering </a> to leave a like' +
+                                    '<button type="button" class="close" data-dismiss="alert" aria-label="close">' +
+                                    '<span aria-hidden="true">&times;</span> ' +
+                                    '</button>' +
+                                    '</div>');
+                            }
+                        </script>
+
+                        <button type="submit" id="alert_placeholder" onclick="alert()" class="fa fa-heart-o"
+                        style="padding: 0; border: none; background: none;">
+                        </button>
+                    {% else %}
+                        <form action="{% url 'blog:like_post' post.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if liked %}
+                        <button type="submit" name="post_slug" value="{{ post.slug }}" class="fa fa-heart-o"
+                        style="padding: 0; border: none; background: none;">
+                        </button>
+                        {% else %}
+                        <button type="submit" name="post_slug" value="{{ post.slug }}" class="fa fa-heart-o"
+                        style="padding: 0; border: none; background: none;">
+                        </button>
+                        {% endif %}
+                        </form>
+                    {% endif %}
                 </div>
+
 
                 {% if post.updated_on > post.created_on %}
                 <p class="text-muted">Updated: {{ post.updated_on }}</p>
                 {% endif %}
+
+
             </div>
             </div>
 
