@@ -3,7 +3,10 @@
 {% load static %}
 {% block title %} Add Post {% endblock %}
 {% block page %} Add Post {% endblock %}
-{% block link %} <a href="{% url 'blog:add_post' %}">Add Post</a>  {% endblock %}
+{% block link %}
+<a href="{% url 'blog:home' %}">Blog</a>
+<a href="{% url 'blog:add_post' %}">Add Post</a>
+{% endblock %}
 {% block content %}
     <body>
         <div class="container align-items-center">

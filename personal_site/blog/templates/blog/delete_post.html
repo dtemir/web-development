@@ -4,6 +4,7 @@
 {% block title %} Delete Blog Post {% endblock %}
 {% block page %} Delete Post: {{ post.title }}{% endblock %}
 {% block link %}
+<a href="{% url 'blog:home' %}">Blog</a>
 <a href="{% url 'blog:post_detail' post.slug %}">Post Detail</a>
 <a href="{% url 'blog:delete_post' post.slug %}">Delete Post</a>
 {% endblock %}

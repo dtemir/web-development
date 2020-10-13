@@ -4,6 +4,7 @@
 {% block title %} Edit Blog Post {% endblock %}
 {% block page %} Edit Post {% endblock %}
 {% block link %}
+<a href="{% url 'blog:home' %}">Blog</a>
 <a href="{% url 'blog:post_detail' post.slug %}">Post Detail</a>
 <a href="{% url 'blog:edit_post' post.slug %}">Edit Post</a>
 {% endblock %}

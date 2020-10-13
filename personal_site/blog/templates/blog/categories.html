@@ -4,6 +4,7 @@
 {% block title %} {{ cat }} {% endblock %}
 {% block page %} {{ cat }} {% endblock %}
 {% block link %}
+<a href="{% url 'blog:home' %}">Blog</a>
 <a href="{% url 'blog:category' cat|slugify %}">Category</a>
 {% endblock %}
 
