@@ -13,3 +13,10 @@ def ResumeView(request):
     template_name = 'greeting/resume.html'
 
     return render(request, template_name)
+
+
+def ContactView(request):
+
+    template_name = 'greeting/contact.html'
+
+    return render(request, template_name)
