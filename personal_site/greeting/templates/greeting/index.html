@@ -200,6 +200,9 @@
         		<div class="gallery_f_inner row imageGallery1">
         			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
         				<div class="h_gallery_item">
+							{% for post in post_list %}
+							{{ post.title }}
+							{% endfor %}
         				</div>
         			</div>
         			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul creative">
