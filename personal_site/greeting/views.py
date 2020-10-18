@@ -16,7 +16,7 @@ def IndexView(request):
                                            'projects_list': project_posts,
                                            'general_list': general_posts,
                                            'college_list': college_posts,
-                                           'travelling_posts': travelling_posts,
+                                           'travelling_list': travelling_posts,
                                            })
 
 
