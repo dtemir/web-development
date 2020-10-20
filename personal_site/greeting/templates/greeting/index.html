@@ -184,7 +184,6 @@
         	<div class="container">
         		<div class="main_title">
         			<h2>My latest blog posts</h2>
-        			<p>This part of the website is currently under construction, please bare with me</p>
         		</div>
         		<div class="isotope_fillter">
         			<ul class="gallery_filter list">
@@ -202,7 +201,7 @@
 					<div class="col-lg-4 col-md-4 col-sm-6 brand">
 						<div class="h_gallery_item">
 						<div class="g_item_text">
-							<h4>{{ post.title }}</h4>
+							<a href="{% url 'blog:post_detail' post.slug %}"><h4>{{ post.title }}</h4></a>
 						</div>
         				</div>
         			</div>
@@ -211,7 +210,7 @@
 					<div class="col-lg-4 col-md-4 col-sm-6 design">
 						<div class="h_gallery_item">
 						<div class="g_item_text">
-							<h4>{{ post.title }}</h4>
+							<a href="{% url 'blog:post_detail' post.slug %}"><h4>{{ post.title }}</h4></a>
 						</div>
         				</div>
         			</div>
@@ -220,7 +219,7 @@
 					<div class="col-lg-4 col-md-4 col-sm-6 creative">
 						<div class="h_gallery_item">
 						<div class="g_item_text">
-							<h4>{{ post.title }}</h4>
+							<a href="{% url 'blog:post_detail' post.slug %}"><h4>{{ post.title }}</h4></a>
 						</div>
         				</div>
         			</div>
@@ -229,7 +228,7 @@
 					<div class="col-lg-4 col-md-4 col-sm-6 manipul">
 						<div class="h_gallery_item">
 						<div class="g_item_text">
-							<h4>{{ post.title }}</h4>
+							<a href="{% url 'blog:post_detail' post.slug %}"><h4>{{ post.title }}</h4></a>
 						</div>
         				</div>
         			</div>
