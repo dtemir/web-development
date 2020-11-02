@@ -200,6 +200,11 @@
         			{% for post in projects_list%}
 					<div class="col-lg-4 col-md-4 col-sm-6 brand">
 						<div class="h_gallery_item">
+						{% if post.thumbnail_image %}
+						<div class="g_img_item">
+							<img class="img-fluid" src="{{ post.thumbnail_image.url }}">
+						</div>
+						{% endif %}
 						<div class="g_item_text">
 							<a href="{% url 'blog:post_detail' post.slug %}"><h4>{{ post.title }}</h4></a>
 						</div>
