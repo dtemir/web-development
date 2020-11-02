@@ -20,6 +20,9 @@
                     <div class="col-md-8 mt-3 mx-auto">
                         {% for post in post_list %}
                         <div class="card mb-4">
+                            {% if post.header_image %}
+                                <img src="{{ post.header_image.url }}" class="card-img-top" style="opacity:0.9;">
+                            {% endif %}
                         <div class="card-body">
                             <h2 style="color: black;">{{ post.title }}</h2>
                             <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }} |
