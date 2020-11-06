@@ -189,6 +189,7 @@
         			<ul class="gallery_filter list">
 						<li class="active" data-filter="*"><a href="#">All</a></li>
 						<li data-filter=".brand"><a href="#">Projects</a></li>
+						<li data-filter=".coding"><a href="#">Coding</a></li>
 						<li data-filter=".design"><a href="#">General</a></li>
 						<li data-filter=".creative"><a href="#">College</a></li>
 						<li data-filter=".manipul"><a href="#">Travelling</a></li>
@@ -199,6 +200,20 @@
 				<div class="gallery_f_inner row imageGallery1">
         			{% for post in projects_list%}
 					<div class="col-lg-4 col-md-4 col-sm-6 brand">
+						<div class="h_gallery_item">
+						{% if post.thumbnail_image %}
+						<div class="g_img_item">
+							<img class="img-fluid" src="{{ post.thumbnail_image.url }}">
+						</div>
+						{% endif %}
+						<div class="g_item_text">
+							<a href="{% url 'blog:post_detail' post.slug %}"><h4>{{ post.title }}</h4></a>
+						</div>
+        				</div>
+        			</div>
+					{% endfor %}
+					{% for post in coding_list%}
+					<div class="col-lg-4 col-md-4 col-sm-6 coding">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
 						<div class="g_img_item">
