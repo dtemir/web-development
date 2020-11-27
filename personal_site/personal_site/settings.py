@@ -1,10 +1,10 @@
-from pathlib import Path
 from .config import *
 import os
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 
 
@@ -71,37 +71,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'personal_site.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-import pymysql
-pymysql.version_info = (1, 4, 6, 'final', 0)
-pymysql.install_as_MySQLdb()
-
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-if os.getenv('GAE_APPLICATION', None):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': mysql_HOST,
-            'USER': mysql_USER,
-            'PASSWORD': mysql_PASSWORD,
-            'NAME': 'main',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
-            'NAME': 'main',
-            'USER': mysql_USER,
-            'PASSWORD': mysql_PASSWORD,
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -121,10 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Chicago'
@@ -141,6 +112,8 @@ LOGOUT_REDIRECT_URL = 'blog:home'
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# AWS stuff
 
 AWS_LOCATION = 'static'
 AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID_config
@@ -165,3 +138,4 @@ STATICFILES_FINDERS = (
 AWS_DEFAULT_ACL = None
 AWS_S3_FILE_OVERWRITE = False
 
+django_heroku.settings(locals(), staticfiles=False)
