@@ -189,10 +189,10 @@
         		</div>
         		<div class="isotope_fillter">
         			<ul class="gallery_filter list">
-						<li class="active" data-filter="*"><a href="#">All</a></li>
+						<li class="active" data-filter=""><a href="#">All</a></li>
 						<li data-filter=".brand"><a href="#">Projects</a></li>
 						<li data-filter=".coding"><a href="#">Coding</a></li>
-						<li data-filter=".design"><a href="#">General</a></li>
+						<li data-filter=".general"><a href="#">General</a></li>
 						<li data-filter=".creative"><a href="#">College</a></li>
 						<li data-filter=".manipul"><a href="#">Travelling</a></li>
 					</ul>
@@ -200,7 +200,8 @@
         	</div>
         	<div class="container">
 				<div class="gallery_f_inner row imageGallery1">
-        			{% for post in projects_list%}
+        			{% for post in posts %}
+					{% if post.category == 'Projects' %}
 					<div class="col-lg-4 col-md-4 col-sm-6 brand">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
@@ -213,8 +214,7 @@
 						</div>
         				</div>
         			</div>
-					{% endfor %}
-					{% for post in coding_list%}
+					{% elif post.category == 'Coding' %}
 					<div class="col-lg-4 col-md-4 col-sm-6 coding">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
@@ -227,9 +227,8 @@
 						</div>
         				</div>
         			</div>
-					{% endfor %}
-        			{% for post in general_list%}
-					<div class="col-lg-4 col-md-4 col-sm-6 design">
+					{% elif post.category == 'General' %}
+					<div class="col-lg-4 col-md-4 col-sm-6 general">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
 						<div class="g_img_item">
@@ -241,8 +240,7 @@
 						</div>
         				</div>
         			</div>
-					{% endfor %}
-        			{% for post in college_list%}
+					{% elif post.category == 'College' %}
 					<div class="col-lg-4 col-md-4 col-sm-6 creative">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
@@ -255,8 +253,7 @@
 						</div>
         				</div>
         			</div>
-					{% endfor %}
-        			{% for post in travelling_list%}
+					{% elif post.category == 'Travelling' %}
 					<div class="col-lg-4 col-md-4 col-sm-6 manipul">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
@@ -269,6 +266,7 @@
 						</div>
         				</div>
         			</div>
+					{% endif %}
 					{% endfor %}
 				</div>
         		<div class="more_btn">
