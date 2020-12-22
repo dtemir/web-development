@@ -12,12 +12,12 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY_config
+SECRET_KEY = os.environ.get('SECRET_KEY_config')
 
 # Application definition
 
@@ -111,9 +111,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # AWS stuff
 
 AWS_LOCATION = 'static'
-AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID_config
-AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY_config
-AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME_config
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID_config')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY_config')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME_config')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
      'CacheControl': 'max-age=86400',
