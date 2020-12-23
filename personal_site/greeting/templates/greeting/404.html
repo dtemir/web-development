@@ -1,0 +1,66 @@
+{% extends 'blog/nav.html' %}
+{% load static %}
+
+{% block title %} 404: Unknown URL {% endblock %}
+{% block page %} 404: Unknown URL {% endblock %}
+{% block link %}
+<a href="{% url 'blog:home' %}">Blog</a>
+<a href="{% url 'greeting:index' %}">Home</a>
+{% endblock %}
+
+{% block content %}
+
+
+    <script>
+            function alert_visible()
+            {
+                $('.alert').alert()
+            }
+    </script>
+
+    <body>
+        <main>
+            <div class="container align-items-center">
+                <div class="row">
+                <div class="col-md-8 mt-3 mx-auto">
+                    <div class="card mb-4">
+                        <img src="{% static 'greeting/img/404.png' %}" class="card-img-top" style="opacity:0.9;">
+                    <div class="card mb-4 card-body">
+                        <h3 class="card-body">Sorry this page does not exist...
+                        </br><small>but while you're here, why don't you check out some of my articles?</small></h3>
+                    </div>
+                    </div>
+                    {% for post in posts %}
+                        <div class="card mb-4">
+                            {% if post.header_image %}
+                                <img src="{{ post.header_image.url }}" class="card-img-top" style="opacity:0.9;">
+                            {% endif %}
+                        <div class="card-body">
+                            <h2 style="color: black;">{{ post.title }}</h2>
+                            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }} |
+                                <a href="{% url 'blog:category' post.category|slugify %}" style="color:#333;">{{ post.category }}</a></p>
+                            <p class="card-text">{{ post.snippet }}</p>
+                            <a href="{% url 'blog:post_detail' post.slug %}" class="main_btn">Read More</a>
+                        </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+
+            {% if is_paginated %}
+              <nav aria-label="Page navigation container"></nav>
+              <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+                {% endif %}
+              </ul>
+              </nav>
+            {% endif %}
+        </main>
+    </body>
+{% endblock content %}
