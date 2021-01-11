@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="{% static 'greeting/css/responsive.css' %}">
     </head>
     <body>
-        
+
         <!--================Header Menu Area =================-->
         <header class="header_area">
             <div class="main_menu">
@@ -198,7 +198,7 @@
         		</div>
         	</div>
         	<div class="container">
-				<div class="gallery_f_inner row imageGallery1">
+				<div class="gallery_f_inner row imageGallery1" id="post_container">
         			{% for post in posts %}
 					{% if post.category == 'Projects' %}
 					<div class="col-lg-4 col-md-4 col-sm-6 projects">
@@ -384,5 +384,25 @@
         <script src="{% static 'greeting/vendors/counter-up/jquery.counterup.min.js' %}"></script>
         <script src="{% static 'greeting/js/mail-script.js' %}"></script>
         <script src="{% static 'greeting/js/theme.js' %}"></script>
+		<script>
+			// This is a script used to display only 6 thumbnails at the index page
+			// If you click Load More Items, it will show 3 more posts
+			const container_div = document.getElementById('post_container'); // get a div with the post_container id
+			const elements = container_div.getElementsByClassName('col-lg-4'); // get all divs with the col-lg-4 class
+			let limit = 6; // the limit on the number of thumbnails shown
+
+			const count = elements.length;  // check if the number of elements is more than limit
+			if (count >= limit) {
+				console.log(elements);
+				hide(elements, limit)
+			}
+
+			// a function to hide all elements that are above the limit
+			function hide (elements) {
+				for (let index = limit; index < (count); index++) {
+					elements[index].style.display = 'none';
+				}
+			}
+		</script>
     </body>
 </html>
