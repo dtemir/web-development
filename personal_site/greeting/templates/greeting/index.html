@@ -189,11 +189,11 @@
         		<div class="isotope_fillter">
         			<ul class="gallery_filter list">
 						<li class="active" data-filter=""><a href="#">All</a></li>
-						<li data-filter=".brand"><a href="#">Projects</a></li>
+						<li data-filter=".projects"><a href="#">Projects</a></li>
 						<li data-filter=".coding"><a href="#">Coding</a></li>
 						<li data-filter=".general"><a href="#">General</a></li>
-						<li data-filter=".creative"><a href="#">College</a></li>
-						<li data-filter=".manipul"><a href="#">Travelling</a></li>
+						<li data-filter=".college"><a href="#">College</a></li>
+						<li data-filter=".travelling"><a href="#">Travelling</a></li>
 					</ul>
         		</div>
         	</div>
@@ -201,7 +201,7 @@
 				<div class="gallery_f_inner row imageGallery1">
         			{% for post in posts %}
 					{% if post.category == 'Projects' %}
-					<div class="col-lg-4 col-md-4 col-sm-6 brand">
+					<div class="col-lg-4 col-md-4 col-sm-6 projects">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
 						<div class="g_img_item">
@@ -240,7 +240,7 @@
         				</div>
         			</div>
 					{% elif post.category == 'College' %}
-					<div class="col-lg-4 col-md-4 col-sm-6 creative">
+					<div class="col-lg-4 col-md-4 col-sm-6 college">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
 						<div class="g_img_item">
@@ -253,7 +253,7 @@
         				</div>
         			</div>
 					{% elif post.category == 'Travelling' %}
-					<div class="col-lg-4 col-md-4 col-sm-6 manipul">
+					<div class="col-lg-4 col-md-4 col-sm-6 travelling">
 						<div class="h_gallery_item">
 						{% if post.thumbnail_image %}
 						<div class="g_img_item">
