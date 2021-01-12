@@ -197,7 +197,7 @@
 					</ul>
         		</div>
         	</div>
-        	<div class="container">
+        	<div class="container" id="grid">
 				<div class="gallery_f_inner row imageGallery1" id="post_container">
         			{% for post in posts %}
 					{% if post.category == 'Projects' %}
@@ -269,7 +269,7 @@
 					{% endfor %}
 				</div>
         		<div class="more_btn">
-        			<a class="main_btn" href="#">Load More Items</a>
+        			<buttong class="main_btn" id="load_more">Load More Items</buttong>
         		</div>
         	</div>
         </section>
@@ -392,17 +392,38 @@
 			let limit = 6; // the limit on the number of thumbnails shown
 
 			const count = elements.length;  // check if the number of elements is more than limit
-			if (count >= limit) {
+			// if there are more posts than the limit, hide them
+			if (count > limit) {
 				console.log(elements);
-				hide(elements, limit)
+				hide(elements, limit);
 			}
 
-			// a function to hide all elements that are above the limit
-			function hide (elements) {
+			// function to hide all elements that are above the limit
+			function hide (elements, limit) {
 				for (let index = limit; index < (count); index++) {
-					elements[index].style.display = 'none';
+					$(elements[index]).hide();
 				}
 			}
+
+			// if the load_more button is pressed, show 3 more posts
+			$('#load_more').on('click', function(){
+					show_more();
+			});
+
+			// function to show three more posts by increasing the limit
+			function show_more() {
+				// iterate over the first three posts that are hidden
+				for (let index = limit; index < (limit + 3); index++){
+					if (index > count) break; // avoid index out of range
+					$(elements[index]).show(); // show elements
+				}
+				limit = limit + 3; // increase the limit for further calls to the function
+				// rearrange the elements by calling the isotope js filter
+				$.getScript("{% static 'greeting/js/theme.js' %}", function(){
+						gallery_isotope(); // (it took me forever discover this function)
+				})
+			}
+
 		</script>
     </body>
 </html>
