@@ -19,14 +19,14 @@
             {% if post.header_image %}
                 <img src="{{ post.header_image.url }}" class="card-img-top" >
             {% endif %}
-            <div class="card-body">
+            <div class="card-body" id="post_container">
                 <p class="text-muted">{{ post.author }} | {{ post.created_on }}
                     {% if user.id == post.author.id and user.is_authenticated %} |
                         <a href="{% url 'blog:edit_post' post.slug %}">Edit</a> |
                         <a href="{% url 'blog:delete_post' post.slug %}">Delete</a>
                     {% endif %}
                 </p>
-                <p class="card-text ">{{ post.content | safe }}</p>
+                <p class="card-text">{{ post.content | safe }}</p>
                 <div style="position: absolute; bottom: 10px; right: 10px;" class="text-muted">
                     <div style="position: absolute; left:3px" id="disappear">{{ total_likes }}</div>
                     <br />
@@ -144,6 +144,38 @@
       </div>
     </div>
 
+    <script>
+
+        const container_div = document.getElementById('post_container'); // get a div with the post container id
+
+        /*
+        CONTAINING IMAGES WITHIN THE BOOTSTRAP CONTAINER
+         */
+        const images = container_div.getElementsByTagName('img') // get all images within the container
+
+        if (images.length > 0){ // if there are any images, call the functions
+            remove_style(images);
+            add_class(images);
+        }
+
+        // remove width and height attributes from the image style attribute
+        function remove_style(images){
+            for (let index = 0; index < images.length; index++){
+                images[index].style.width = null;
+                images[index].style.height = null;
+            }
+        }
+
+        // assign an img-fluid class to each image
+        // (so they would fit within the container and won't leave the borders)
+        function add_class(images){
+            for (let index = 0; index < images.length; index++){
+               images[index].className += ' img-fluid';
+            }
+        }
+
+    </script>
     </body>
+
 {% endblock content %}
 
