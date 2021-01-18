@@ -23,8 +23,22 @@
                   <button type="submit" class="btn btn-dark">Publish</button>
                   </form>
                   <script>
+                    // auto-fill the author field with the current user's id
                     var name = "{{ user.id }}";
                     document.getElementById("views.author").value = name;
+
+                    // put line breaks after the category select section
+                    // otherwise, the "content" label will be on the same line as the options
+                    var linebreak = document.createElement("br");
+                    var category = document.getElementById("category");
+
+                    category.after(linebreak);
+
+                    var linebreak = document.createElement("br");
+                    var category = document.getElementById('div_id_category');
+
+                    category.after(linebreak);
+
                   </script>
                   {% else %}
                     <h3>Unfortunately, you do not have a permission</h3>

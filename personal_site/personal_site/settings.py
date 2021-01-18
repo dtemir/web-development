@@ -134,3 +134,12 @@ AWS_DEFAULT_ACL = None
 AWS_S3_FILE_OVERWRITE = False
 
 django_heroku.settings(locals(), staticfiles=False)
+
+# CKEDITOR stuff
+
+CKEDITOR_CONFIGS = {
+    'default':
+        {
+            'toolbar': 'default',
+        }
+}
