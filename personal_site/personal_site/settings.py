@@ -141,5 +141,7 @@ CKEDITOR_CONFIGS = {
     'default':
         {
             'toolbar': 'default',
+            'items': ['codeSnippet'],
+            'extraPlugins': 'codesnippet',
         }
 }
