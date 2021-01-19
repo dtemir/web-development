@@ -394,7 +394,6 @@
 			const count = elements.length;  // check if the number of elements is more than limit
 			// if there are more posts than the limit, hide them
 			if (count > limit) {
-				console.log(elements);
 				hide(elements, limit);
 			}
 
@@ -407,7 +406,7 @@
 
 			// if the load_more button is pressed, show 3 more posts
 			$('#load_more').on('click', function(){
-					show_more();
+				show_more();
 			});
 
 			// function to show three more posts by increasing the limit
@@ -420,7 +419,7 @@
 				limit = limit + 3; // increase the limit for further calls to the function
 				// rearrange the elements by calling the isotope js filter
 				$.getScript("{% static 'greeting/js/theme.js' %}", function(){
-						gallery_isotope(); // (it took me forever discover this function)
+					gallery_isotope(); // (it took me forever discover this function)
 				})
 			}
 
