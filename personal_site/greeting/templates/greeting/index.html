@@ -421,6 +421,11 @@
 				$.getScript("{% static 'greeting/js/theme.js' %}", function(){
 					gallery_isotope(); // (it took me forever discover this function)
 				})
+
+				if (limit >= count){
+					document.getElementById('load_more').innerText = 'Show Less Items';
+					document.getElementById('load_more').id = 'load_less';
+				}
 			}
 
 		</script>
