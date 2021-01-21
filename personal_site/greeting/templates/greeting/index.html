@@ -387,45 +387,69 @@
 		<script>
 			// This is a script used to display only 6 thumbnails at the index page
 			// If you click Load More Items, it will show 3 more posts
-			const container_div = document.getElementById('post_container'); // get a div with the post_container id
-			const elements = container_div.getElementsByClassName('col-lg-4'); // get all divs with the col-lg-4 class
-			let limit = 6; // the limit on the number of thumbnails shown
+			// If it shows all of the available posts, Load More Items will turn into Load Less Items
+			// If you click Load Less Items, it will hide 3 posts
 
-			const count = elements.length;  // check if the number of elements is more than limit
+			const container_div = document.getElementById('post_container'); // get the section with thumbnails
+			const elements = container_div.getElementsByClassName('col-lg-4'); // get all thumbnails
+			let limit = 6; // limit for thumbnails
+
+			const count = elements.length;
 			// if there are more posts than the limit, hide them
 			if (count > limit) {
 				hide(elements, limit);
 			}
 
 			// function to hide all elements that are above the limit
-			function hide (elements, limit) {
+			function hide () {
 				for (let index = limit; index < (count); index++) {
 					$(elements[index]).hide();
 				}
 			}
 
-			// if the load_more button is pressed, show 3 more posts
+			// if the Load More Items button is pressed, show 3 more posts
 			$('#load_more').on('click', function(){
-				show_more();
+				if (!(limit > count)){
+					show_more();
+				} else {
+					show_less();
+				}
 			});
 
 			// function to show three more posts by increasing the limit
 			function show_more() {
 				// iterate over the first three posts that are hidden
 				for (let index = limit; index < (limit + 3); index++){
-					if (index > count) break; // avoid index out of range
-					$(elements[index]).show(); // show elements
+					if (index > count) break;
+					$(elements[index]).show();
 				}
-				limit = limit + 3; // increase the limit for further calls to the function
-				// rearrange the elements by calling the isotope js filter
-				$.getScript("{% static 'greeting/js/theme.js' %}", function(){
-					gallery_isotope(); // (it took me forever discover this function)
-				})
 
-				if (limit >= count){
-					document.getElementById('load_more').innerText = 'Show Less Items';
-					document.getElementById('load_more').id = 'load_less';
+				limit = limit + 3; // increase the limit for further calls to the function
+
+				// rearrange the elements by calling the isotope js filter
+				$.getScript("{% static 'greeting/js/theme.js' %}", function() {
+					gallery_isotope();
+				});
+
+				// if all thumbnails are now presented, change the button
+				if (limit > count){
+					console.log(limit);
+					const more_button = document.getElementById('load_more')
+					more_button.innerText = 'Show Less Items';
+					more_button.id = 'load_less';
 				}
+			}
+
+			function show_less(){
+				limit -= 3;
+				for (let index = count; index >= (limit); index--){
+					$(elements[index]).hide()
+				}
+
+				$.getScript("{% static 'greeting/js/theme.js' %}", function() {
+					gallery_isotope();
+				});
+
 			}
 
 		</script>
