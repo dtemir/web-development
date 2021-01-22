@@ -1,12 +1,24 @@
-# web-development
-This a repository for my **web-development** projects. 
-I am not very keen about the Front-End (I mostly use available html templates), 
-but I like working on the Back-End with the Django framework.
+# Web-Development Projects
+This a repository for my **web-development** projects.
 
-The idea for my current project comes from my final project for CS50x. 
-At first, it was going to be a simple Django blogging application(minimum style, 
-simple posts, simple comments). 
-However, now it is more of a personal site with a nice blogging system.
+## Web-Blogging Application with Django
+
+The idea for the project comes from my final project for CS50x. 
+A personal website with a blogging feature and interactive thumbnail system.
+
+<details><summary>See Screenshots</summary>
+
+![Personal Site Index Page](demos/ps-index.png)
+
+![Personal Site Thumbnails](demos/ps-thumbnails.png)
+
+![Personal Site Blog](demos/ps-blog.png)
+
+![Personal Site Detail](demos/ps-detail.png)
+
+![Persona Site Edit](demos/ps-edit.png)
+
+</details>
 
 * Some of the noticeable features of the **personal_site** project:
     * Three models in [*blog/models.py*](https://github.com/dtemir/web-development/blob/master/personal_site/blog/models.py): post, comment, and category
