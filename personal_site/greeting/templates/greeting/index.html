@@ -269,7 +269,7 @@
 					{% endfor %}
 				</div>
         		<div class="more_btn">
-        			<button class="main_btn" id="load_more">Load More Items</button>
+        			<buttong class="main_btn" id="load_more">Load More Items</buttong>
         		</div>
         	</div>
         </section>
@@ -385,40 +385,51 @@
         <script src="{% static 'greeting/js/mail-script.js' %}"></script>
         <script src="{% static 'greeting/js/theme.js' %}"></script>
 		<script>
-			// This is a script used to display only 6 thumbnails at the index page
-			// If you click Load More Items, it will show 3 more posts
-			// If it shows all of the available posts, Load More Items will turn into Load Less Items
-			// If you click Load Less Items, it will hide 3 posts
+			/*
+			Initially, display only 6 thumbnails at the index page.
+			@clicking id load_more shows 3 more posts.
+			@clicking id load_more after all posts are shown,
+			hides all posts except for first 3.
+			 */
 
-			const container_div = document.getElementById('post_container'); // get the section with thumbnails
-			const elements = container_div.getElementsByClassName('col-lg-4'); // get all thumbnails
-			let limit = 6; // limit for thumbnails
+			const container_div = document.getElementById('post_container'); // the section with thumbnails
+			const elements = container_div.getElementsByClassName('col-lg-4'); // all thumbnails within the section
+			let limit = 6; // initial limit for thumbnails
 
-			const count = elements.length;
+			const count = elements.length; // the number of posts
+
 			// if there are more posts than the limit, hide them
 			if (count > limit) {
 				hide(elements, limit);
 			}
 
-			// function to hide all elements that are above the limit
+			/*
+			Hide all elements that are above the limit.
+			 */
 			function hide () {
 				for (let index = limit; index < (count); index++) {
 					$(elements[index]).hide();
 				}
 			}
 
+			var less = false; // keep status when to turn from show_more to show_less
+
 			// if the Load More Items button is pressed, show 3 more posts
 			$('#load_more').on('click', function(){
-				if (!(limit > count)){
+				if (!(limit > count) && !less){ // limit does not exceed the count and show_less is not activated
 					show_more();
-				} else {
+				} else { // limit exceeds the count
+					less = true; // activate show_less
 					show_less();
 				}
 			});
 
-			// function to show three more posts by increasing the limit
+			/*
+			Show 3 more posts with each call to the function.
+			@change_button to keep the caption of the button updated.
+			 */
 			function show_more() {
-				// iterate over the first three posts that are hidden
+				// show the next 3 posts that are hidden
 				for (let index = limit; index < (limit + 3); index++){
 					if (index > count) break;
 					$(elements[index]).show();
@@ -431,25 +442,46 @@
 					gallery_isotope();
 				});
 
-				// if all thumbnails are now presented, change the button
+				change_button(); // check if the button caption needs to change
+
+			}
+
+			/*
+			Change the @load_more button text according to the status.
+			If @show_less is activated, change the caption to 'Show Less.'
+			If @show_less is not activated, return the caption to 'Load More.'
+			 */
+			function change_button(){
+				const more_button = document.getElementById('load_more')
 				if (limit > count){
-					console.log(limit);
-					const more_button = document.getElementById('load_more')
 					more_button.innerText = 'Show Less Items';
-					more_button.id = 'load_less';
+				} else if (!less) {
+					more_button.innerText = 'Load More Items'
 				}
 			}
 
+			/*
+			Show 3 less posts with each call to the function.
+			@less keeps the status; if true, show_less is activated.
+			 */
 			function show_less(){
-				limit -= 3;
-				for (let index = count; index >= (limit); index--){
-					$(elements[index]).hide()
+				limit -= 3; // lower the limit for further calls to the function
+				// hide the last 3 posts that are visible
+				for (let index = count; index >= limit; index--){
+					$(elements[index]).hide();
 				}
 
+				// rearrange the elements by calling the isotope js filter
 				$.getScript("{% static 'greeting/js/theme.js' %}", function() {
 					gallery_isotope();
 				});
 
+				// updated the status if there are only 3 posts left
+				if (limit <= 3) {
+					less = false;
+				}
+
+				change_button(); // check if the button caption needs to change
 			}
 
 		</script>
