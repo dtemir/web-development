@@ -104,7 +104,9 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = 'blog:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
 
+# Invoked when DEBUG == 'True' (uses local static folder for development (not shown in git))
 STATIC_URL = '/static/'
+# STATIC_ROOT = 'static'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -133,6 +135,7 @@ STATICFILES_FINDERS = (
 AWS_DEFAULT_ACL = None
 AWS_S3_FILE_OVERWRITE = False
 
+# Handle the configuration of static files by yourself
 django_heroku.settings(locals(), staticfiles=False)
 
 # CKEDITOR stuff

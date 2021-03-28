@@ -6,9 +6,6 @@
 	}
 	/* End Main Menu Area css
 	============================================================================================ */
-	.banner_area .box_1620 {
-		border-radius: 0px;
-	}
 }
 @media (max-width:1300px){
 	.testimonials_area .owl-prev, .testimonials_area .owl-next {
