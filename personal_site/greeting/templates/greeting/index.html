@@ -279,19 +279,41 @@
         <section class="mytabs_area p_120">
         	<div class="container">
         		<div class="tabs_inner">
-
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Experiences</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Education</a>
+							</li>
+					</ul>
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 							<ul class="list">
+								{% for experience in experiences %}
 								<li>
 									<span></span>
 									<div class="media">
 										<div class="d-flex">
-											<p>Sep 2020 - Present</p>
+											<p>{{ experience.period }}</p>
 										</div>
 										<div class="media-body">
-											<h4>Center for Online Learning and Research (COLRs)</h4>
-											<p>Accessibility Student Worker<br />Springfield, IL</p>
+											<h4>{{ experience.title }}</h4>
+
+											<p></p>
+										</div>
+									</div>
+								</li>
+								{% endfor %}
+								<li>
+									<span></span>
+									<div class="media">
+										<div class="d-flex">
+											<p>Aug 2019 - Present <br /></p>
+										</div>
+										<div class="media-body">
+											<h4>University of Illinois Springfield</h4>
+											<p>Honors Student<br />Springfield, IL</p>
 										</div>
 									</div>
 								</li>

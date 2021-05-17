@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from blog.models import Post
-from .models import Description
+from .models import Description, Experience
 
 
 def IndexView(request):
@@ -9,9 +9,12 @@ def IndexView(request):
 
     description = Description.objects.order_by('-created_on')[0]
     posts = Post.objects.filter(status=1).order_by('-created_on')
+    experiences = Experience.objects.order_by('-period')
+
 
     return render(request, template_name, {'posts': posts,
-                                           'description': description})
+                                           'description': description,
+                                           'experiences': experiences})
 
 
 def ResumeView(request):
